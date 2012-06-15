@@ -1,0 +1,5 @@
+The contents in context.xml and dependency on Weld (reference implementation of CDI) are only necessary if CDI is used
+
+Stateless and Stateful Beans are EJB concepts, but Spring offers similar services through Service Beans.
+Put the @Service annotation in your Business Logic classes, and if you want your beans to be "Stateless" or "Stateful"
+just configure your bean scope (like Request or Session).
