@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+   <!-- disable storage of sessions across restarts -->
+   <Manager pathname=""/>
+
+
+    <!--
+    Tomcat has a read-only JNDI, so Weld can't automatically bind the BeanManager extension SPI.
+    To bind the BeanManager into JNDI, you should populate META-INF/context.xml in the web root
+    with the following contents
+    -->
+   <Resource
+           name="BeanManager"
+           auth="Container"
+           type="javax.enterprise.inject.spi.BeanManager"
+           factory="org.jboss.weld.resources.ManagerObjectFactory"
+   />
+
+   <!-- Uncomment to enable injection into Servlets, Servlet Listeners and Filters in Tomcat -->
+   <!-- <Listener className="org.jboss.weld.environment.tomcat.WeldLifecycleListener"/> -->
+</Context>
