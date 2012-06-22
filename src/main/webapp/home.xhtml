@@ -7,10 +7,6 @@
 	template="/WEB-INF/templates/template.xhtml">
 
 	<ui:define name="content">
-		<h1><h:outputText value="Hello From JSF" /></h1>
-		Message : #{homeBean.message}<br />
-		<br />
-
         <p:commandButton id="showDialogButton" type="button" value="Show" onclick="dlg.show()" />
 
         <p:dialog header="Enter connection name" widgetVar="dlg" resizable="false">
@@ -21,22 +17,29 @@
                     <p:inputText id="connectionname" value="#{serverConnectionBean.serverConnection.name}" />
                     <h:outputLabel for="username" value="User name:" />
                     <p:inputText id="username" value="#{serverConnectionBean.serverConnection.userName}" />
+
+
+                    <p:selectOneMenu id="connectiontype" value="#{serverConnectionBean.serverConnection.connectionType}">
+                       <f:selectItems value="#{serverConnectionBean.connectionTypes}" />
+    <!--
+                       <p:ajax update="suburbs"
+                               listener="#{pprBean.handleCityChange}" />
+    -->
+                    </p:selectOneMenu>
+
+                    <p:selectOneMenu id="connectionrole" value="#{serverConnectionBean.serverConnection.connectionRole}">
+                       <f:selectItems value="#{serverConnectionBean.connectionRoles}" />
+                    </p:selectOneMenu>
                 </h:panelGrid>
-
-                <p:selectOneMenu id="connectiontype" value="#{serverConnectionBean.serverConnection.connectionType}">
-                   <f:selectItems value="#{serverConnectionBean.connectionTypes}" />
-<!--
-                   <p:ajax update="suburbs"
-                           listener="#{pprBean.handleCityChange}" />
--->
-                </p:selectOneMenu>
-
 <!--
                 <p:selectOneMenu id="suburbs" value="#{pprBean.suburb}">
                    <f:selectItem itemLabel="Select Suburb" itemValue="" />
                    <f:selectItems value="#{pprBean.suburbs}" />
                 </p:selectOneMenu>
 -->
+
+                <p:separator />
+
 
                 <p:separator />
                 <p:commandButton id="submitButton" value="Submit" update=":display" action="#{serverConnectionBean.saveServerConnection}" oncomplete="dlg.hide();"/>

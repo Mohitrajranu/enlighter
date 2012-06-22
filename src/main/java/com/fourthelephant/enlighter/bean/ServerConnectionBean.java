@@ -1,6 +1,7 @@
 package com.fourthelephant.enlighter.bean;
 
 import com.fourthelephant.enlighter.dao.ServerConnectionDao;
+import com.fourthelephant.enlighter.model.OracleConnectionRole;
 import com.fourthelephant.enlighter.model.OracleConnectionType;
 import com.fourthelephant.enlighter.model.ServerConnection;
 import org.slf4j.Logger;
@@ -46,12 +47,22 @@ public class ServerConnectionBean {
 		
 	}
 
-    public List<SelectItem> getConnectionTypes(){
+    public List<SelectItem> getConnectionRoles(){
         List<SelectItem> connectionTypes = new ArrayList<SelectItem>();
 
-        for(OracleConnectionType type :OracleConnectionType.values())
+        for(OracleConnectionRole type : OracleConnectionRole.values())
             connectionTypes.add(new SelectItem(type));
 
         return connectionTypes;
     }
+
+    public List<SelectItem> getConnectionTypes(){
+        List<SelectItem> connectionTypes = new ArrayList<SelectItem>();
+
+        for(OracleConnectionType type : OracleConnectionType.values())
+            connectionTypes.add(new SelectItem(type));
+
+        return connectionTypes;
+    }
+
 }

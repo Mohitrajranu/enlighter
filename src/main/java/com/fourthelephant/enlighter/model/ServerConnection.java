@@ -22,9 +22,8 @@ public class ServerConnection {
     @Size(max=48)
     private String userName;
 
-    private OracleConnectionType connectionType = OracleConnectionType.NORMAL;
-
-
+    private OracleConnectionRole connectionRole = OracleConnectionRole.NORMAL;
+    private OracleConnectionType connectionType = OracleConnectionType.BASIC;
 
     public OracleConnectionType getConnectionType() {
         return connectionType;
@@ -32,6 +31,14 @@ public class ServerConnection {
 
     public void setConnectionType(OracleConnectionType connectionType) {
         this.connectionType = connectionType;
+    }
+
+    public OracleConnectionRole getConnectionRole() {
+        return connectionRole;
+    }
+
+    public void setConnectionRole(OracleConnectionRole connectionType) {
+        this.connectionRole = connectionType;
     }
 
     public Long getId() {
