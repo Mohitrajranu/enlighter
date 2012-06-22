@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component("dbHome")
+@Component("dbbean")
 @Scope("request")
 public class DbBean {
 
