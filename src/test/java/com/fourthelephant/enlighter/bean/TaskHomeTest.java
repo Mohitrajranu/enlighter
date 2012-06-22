@@ -2,7 +2,6 @@ package com.fourthelephant.enlighter.bean;
 
 import com.fourthelephant.enlighter.model.Task;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class TaskHomeTest {
 	
 	@Autowired
-	private TaskHome taskHome;
+	private TaskBean taskHome;
 		
 	@Test
 	public void shouldGetCorrectMessage() {			

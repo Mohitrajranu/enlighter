@@ -11,9 +11,9 @@ import java.util.List;
 
 @Component("dbHome")
 @Scope("request")
-public class DbHome {
+public class DbBean {
 
-	private static final Logger logger = LoggerFactory.getLogger(DbHome.class);
+	private static final Logger logger = LoggerFactory.getLogger(DbBean.class);
 
 	private Task task = new Task();
 	private List<Task> schemas = new ArrayList<Task>();

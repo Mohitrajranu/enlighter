@@ -10,25 +10,38 @@
 		<h1><h:outputText value="Hello From JSF" /></h1>
 		Message : #{homeBean.message}<br />
 		<br />
-        <p:editor />
-		<h2>Tasks</h2>
+
+        <p:commandButton id="showDialogButton" type="button" value="Show" onclick="dlg.show()" />
+
+        <p:dialog header="Enter connection name" widgetVar="dlg" resizable="false">
+            <h:form id="form">
+
+                <h:panelGrid columns="2" style="margin-bottom:10px">
+                    <h:outputLabel for="connectionname" value="Connection name:" />
+                    <p:inputText id="connectionname" value="#{serverConnectionHome.serverConnection.name}" />
+                    <h:outputLabel for="username" value="User name:" />
+                    <p:inputText id="username" value="#{serverConnectionHome.serverConnection.userName}" />
+                </h:panelGrid>
+
+                <p:commandButton id="submitButton" value="Submit" update=":display" action="#{serverConnectionHome.saveServerConnection}" oncomplete="dlg.hide();"/>
+
+            </h:form>
+        </p:dialog>
+
+        <p:outputPanel id="display" style="display:block;margin-top:10px;">
+            <h:outputText id="name" value="Hello #{serverConnectionHome.serverConnection.name}" rendered="#{not empty serverConnectionHome.serverConnection.name}"/>
+        </p:outputPanel>
+
+
+        <h2>Tasks</h2>
 		<table>
-			<ui:repeat value="#{taskHome.tasks}" var="v_task">
+			<ui:repeat value="#{taskHome.tasks}" var="curTask">
 				<tr>
-					<td>#{v_task.id}</td>
-					<td>#{v_task.description}</td>
+					<td>#{curTask.id}</td>
+					<td>#{curTask.description}</td>
 				</tr>
 			</ui:repeat>
 		</table>
-
-        <table>
-            <ui:repeat value="#{dbHome.schemas}" var="v_task">
-                <tr>
-                    <td>#{v_task.id}</td>
-                    <td>#{v_task.description}</td>
-                </tr>
-            </ui:repeat>
-        </table>
 
         <h:form>
 			<div style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">

@@ -15,9 +15,14 @@ public class ServerConnection {
 	@Column(length=48)
 	@NotEmpty
 	@Size(max=48)
-	private String description;
+	private String name;
 
-	public Long getId() {
+    @Column(length=48)
+    @NotEmpty
+    @Size(max=48)
+    private String userName;
+
+    public Long getId() {
 		return id;
 	}
 
@@ -25,12 +30,19 @@ public class ServerConnection {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getName() {
+		return name;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setName(String name) {
+		this.name = name;
 	}
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }
