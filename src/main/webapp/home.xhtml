@@ -18,24 +18,40 @@
 
                 <h:panelGrid columns="2" style="margin-bottom:10px">
                     <h:outputLabel for="connectionname" value="Connection name:" />
-                    <p:inputText id="connectionname" value="#{serverConnectionHome.serverConnection.name}" />
+                    <p:inputText id="connectionname" value="#{serverConnectionBean.serverConnection.name}" />
                     <h:outputLabel for="username" value="User name:" />
-                    <p:inputText id="username" value="#{serverConnectionHome.serverConnection.userName}" />
+                    <p:inputText id="username" value="#{serverConnectionBean.serverConnection.userName}" />
                 </h:panelGrid>
 
-                <p:commandButton id="submitButton" value="Submit" update=":display" action="#{serverConnectionHome.saveServerConnection}" oncomplete="dlg.hide();"/>
+                <p:selectOneMenu id="connectiontype" value="#{serverConnectionBean.serverConnection.connectionType}">
+                   <f:selectItems value="#{serverConnectionBean.connectionTypes}" />
+<!--
+                   <p:ajax update="suburbs"
+                           listener="#{pprBean.handleCityChange}" />
+-->
+                </p:selectOneMenu>
+
+<!--
+                <p:selectOneMenu id="suburbs" value="#{pprBean.suburb}">
+                   <f:selectItem itemLabel="Select Suburb" itemValue="" />
+                   <f:selectItems value="#{pprBean.suburbs}" />
+                </p:selectOneMenu>
+-->
+
+                <p:separator />
+                <p:commandButton id="submitButton" value="Submit" update=":display" action="#{serverConnectionBean.saveServerConnection}" oncomplete="dlg.hide();"/>
 
             </h:form>
         </p:dialog>
 
         <p:outputPanel id="display" style="display:block;margin-top:10px;">
-            <h:outputText id="name" value="Hello #{serverConnectionHome.serverConnection.name}" rendered="#{not empty serverConnectionHome.serverConnection.name}"/>
+            <h:outputText id="name" value="Hello #{serverConnectionBean.serverConnection.name}" rendered="#{not empty serverConnectionBean.serverConnection.name}"/>
         </p:outputPanel>
 
 
         <h2>Tasks</h2>
 		<table>
-			<ui:repeat value="#{taskHome.tasks}" var="curTask">
+			<ui:repeat value="#{taskBean.tasks}" var="curTask">
 				<tr>
 					<td>#{curTask.id}</td>
 					<td>#{curTask.description}</td>
@@ -45,8 +61,8 @@
 
         <h:form>
 			<div style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">
-				<h:inputText value="#{taskHome.task.description}" id="taskDesc"/>
-                <h:commandButton action="#{taskHome.saveTask}" value="Add" />
+				<h:inputText value="#{taskBean.task.description}" id="taskDesc"/>
+                <h:commandButton action="#{taskBean.saveTask}" value="Add" />
                 <h:message for="taskDesc" style="color : red;padding-left : 8px"/>
             </div>
 		</h:form>
