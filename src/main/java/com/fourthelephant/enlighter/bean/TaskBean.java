@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component("taskHome")
-public class TaskHome {
+public class TaskBean {
 
-	private static final Logger logger = LoggerFactory.getLogger(TaskHome.class);
+	private static final Logger logger = LoggerFactory.getLogger(TaskBean.class);
 
 	private Task task = new Task();
 	private List<Task> tasks;
