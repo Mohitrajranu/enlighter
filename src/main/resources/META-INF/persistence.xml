@@ -9,6 +9,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>com.fourthelephant.enlighter.model.Task</class>
         <class>com.fourthelephant.enlighter.model.ServerConnection</class>
+        <class>com.fourthelephant.enlighter.model.SysStat</class>
 		<properties>
             <property name="hibernate.archive.autodetection" value="class, hbm"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />

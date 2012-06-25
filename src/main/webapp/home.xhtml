@@ -10,11 +10,16 @@
         <p:commandButton id="showDialogButton" type="button" value="Show" onclick="dlg.show()" />
 
         <p:dialog header="Enter connection name" widgetVar="dlg" resizable="false">
-            <h:form id="form">
+            <h:form id="connectionform">
 
-                <h:panelGrid columns="2" style="margin-bottom:10px">
+                <p:messages id="messages" />
+                <h:panelGrid id="connectiongrid" columns="2" style="margin-bottom:10px">
+
+
                     <h:outputLabel for="connectionname" value="Connection name:" />
-                    <p:inputText id="connectionname" value="#{serverConnectionBean.serverConnection.name}" />
+                    <p:inputText id="connectionname" value="#{serverConnectionBean.serverConnection.name}" required="true"/>
+                    <p:message id="defaultMessage" for="connectionname"/>
+
                     <h:outputLabel for="username" value="User name:" />
                     <p:inputText id="username" value="#{serverConnectionBean.serverConnection.userName}" />
 
@@ -42,7 +47,8 @@
 
 
                 <p:separator />
-                <p:commandButton id="submitButton" value="Submit" update=":display" action="#{serverConnectionBean.saveServerConnection}" oncomplete="dlg.hide();"/>
+                <p:commandButton id="submitButton" value="Submit" update="connectiongrid" action="#{serverConnectionBean.saveServerConnection}" />
+                <!--oncomplete="dlg.hide();"-->
 
             </h:form>
         </p:dialog>
@@ -51,13 +57,22 @@
             <h:outputText id="name" value="Hello #{serverConnectionBean.serverConnection.name}" rendered="#{not empty serverConnectionBean.serverConnection.name}"/>
         </p:outputPanel>
 
+        <h2>System stats</h2>
+        <table>
+            <ui:repeat value="#{sysStatBean.sysStats}" var="curStat">
+                <tr>
+                    <td>#{curStat.statNumber}</td>
+                    <td>#{curStat.name}</td>
+                </tr>
+            </ui:repeat>
+        </table>
 
         <h2>Tasks</h2>
 		<table>
-			<ui:repeat value="#{taskBean.tasks}" var="curTask">
+			<ui:repeat value="#{taskBean.tasks}" var="curStat">
 				<tr>
-					<td>#{curTask.id}</td>
-					<td>#{curTask.description}</td>
+					<td>#{curStat.id}</td>
+					<td>#{curStat.description}</td>
 				</tr>
 			</ui:repeat>
 		</table>

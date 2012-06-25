@@ -244,6 +244,13 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<configuration>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
+                    <stopPort>8580</stopPort>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>8580</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
 				</configuration>
 			</plugin>
 

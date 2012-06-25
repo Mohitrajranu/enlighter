@@ -3,6 +3,7 @@ package com.fourthelephant.enlighter.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -22,7 +23,12 @@ public class ServerConnection {
     @Size(max=48)
     private String userName;
 
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
     private OracleConnectionRole connectionRole = OracleConnectionRole.NORMAL;
+
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
     private OracleConnectionType connectionType = OracleConnectionType.BASIC;
 
     public OracleConnectionType getConnectionType() {
