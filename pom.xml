@@ -19,6 +19,13 @@
 
 	<dependencies>
 
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+            <scope>runtime</scope>
+        </dependency>
+
 		<!-- JSF Dependencies -->
 
 		<dependency>

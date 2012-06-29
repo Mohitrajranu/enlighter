@@ -10,8 +10,8 @@ import java.util.List;
 
 @Component
 public class ServerConnectionDao {
-	
-	@PersistenceContext
+
+	@PersistenceContext(unitName="localunit")
 	private EntityManager entityManager;
 
 	@Transactional
