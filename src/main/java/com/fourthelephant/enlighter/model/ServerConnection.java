@@ -15,7 +15,7 @@ public class ServerConnection {
 
 	@Column(length=48)
 	@NotEmpty
-	@Size(max=48)
+	@Size(max=4)
 	private String name;
 
     @Column(length=48)
