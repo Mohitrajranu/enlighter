@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
+@MappedSuperclass
 public class ServerConnection {
 
 	@Id
@@ -22,30 +22,6 @@ public class ServerConnection {
     @NotEmpty
     @Size(max=48)
     private String userName;
-
-    @NotNull
-    @Enumerated(EnumType.ORDINAL)
-    private OracleConnectionRole connectionRole = OracleConnectionRole.NORMAL;
-
-    @NotNull
-    @Enumerated(EnumType.ORDINAL)
-    private OracleConnectionType connectionType = OracleConnectionType.BASIC;
-
-    public OracleConnectionType getConnectionType() {
-        return connectionType;
-    }
-
-    public void setConnectionType(OracleConnectionType connectionType) {
-        this.connectionType = connectionType;
-    }
-
-    public OracleConnectionRole getConnectionRole() {
-        return connectionRole;
-    }
-
-    public void setConnectionRole(OracleConnectionRole connectionType) {
-        this.connectionRole = connectionType;
-    }
 
     public Long getId() {
 		return id;

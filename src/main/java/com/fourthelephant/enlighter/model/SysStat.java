@@ -8,8 +8,8 @@ import javax.persistence.Table;
 /**
  * @author Vadim Bobrov
  */
-@Entity
-@Table(name = "V$SYSSTAT")
+//@Entity
+//@Table(name = "V$SYSSTAT")
 public class SysStat {
 
     @Id
