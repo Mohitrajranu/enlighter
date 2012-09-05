@@ -14,6 +14,7 @@ public abstract class ModelBase {
     @Version
     private Integer version;
 
+/*
     @ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
     private User createdByUser;
 
@@ -27,4 +28,5 @@ public abstract class ModelBase {
     @Temporal(value = TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private Date dateUpdated;
+*/
 }

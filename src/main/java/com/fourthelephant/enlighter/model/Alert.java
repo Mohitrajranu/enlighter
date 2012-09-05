@@ -12,6 +12,7 @@ public class Alert {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+/*
     adapterId number(38) not null references adapters (id) on delete cascade,
     raisedTime number(38) not null,
     canceledTime number(38) not null,
@@ -22,4 +23,5 @@ public class Alert {
     alertTypeId smallint not null,
 
     text varchar2(300) not null
+*/
 }
