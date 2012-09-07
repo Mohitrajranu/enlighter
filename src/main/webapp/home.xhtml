@@ -24,31 +24,14 @@
                     <p:inputText id="username" value="#{serverConnectionBean.serverConnection.userName}" />
 
 
-                    <p:selectOneMenu id="connectiontype" value="#{serverConnectionBean.serverConnection.connectionType}">
-                       <f:selectItems value="#{serverConnectionBean.connectionTypes}" />
-    <!--
-                       <p:ajax update="suburbs"
-                               listener="#{pprBean.handleCityChange}" />
-    -->
-                    </p:selectOneMenu>
+               </h:panelGrid>
 
-                    <p:selectOneMenu id="connectionrole" value="#{serverConnectionBean.serverConnection.connectionRole}">
-                       <f:selectItems value="#{serverConnectionBean.connectionRoles}" />
-                    </p:selectOneMenu>
-                </h:panelGrid>
-<!--
-                <p:selectOneMenu id="suburbs" value="#{pprBean.suburb}">
-                   <f:selectItem itemLabel="Select Suburb" itemValue="" />
-                   <f:selectItems value="#{pprBean.suburbs}" />
-                </p:selectOneMenu>
--->
-
-                <p:separator />
+               <p:separator />
 
 
-                <p:separator />
-                <p:commandButton id="submitButton" value="Submit" update="connectiongrid" action="#{serverConnectionBean.saveServerConnection}" />
-                <!--oncomplete="dlg.hide();"-->
+               <p:separator />
+               <p:commandButton id="submitButton" value="Submit" update="connectiongrid" action="#{serverConnectionBean.saveServerConnection}" />
+               <!-- oncomplete="dlg.hide();-->
 
             </h:form>
         </p:dialog>
@@ -57,7 +40,6 @@
             <h:outputText id="name" value="Hello #{serverConnectionBean.serverConnection.name}" rendered="#{not empty serverConnectionBean.serverConnection.name}"/>
         </p:outputPanel>
 
-<!--
         <h2>System stats</h2>
         <table>
             <ui:repeat value="#{sysStatBean.sysStats}" var="curStat">
@@ -67,7 +49,8 @@
                 </tr>
             </ui:repeat>
         </table>
--->
+
+
 
         <h2>Tasks</h2>
 		<table>

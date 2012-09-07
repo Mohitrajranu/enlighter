@@ -1,10 +1,12 @@
 package com.fourthelephant.enlighter.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import javax.persistence.*;
+import javax.faces.model.SelectItem;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class OracleServerConnection extends ServerConnection {
@@ -31,6 +33,24 @@ public class OracleServerConnection extends ServerConnection {
 
     public void setConnectionRole(OracleConnectionRole connectionType) {
         this.connectionRole = connectionType;
+    }
+
+    public List<SelectItem> getConnectionRoles(){
+        List<SelectItem> connectionTypes = new ArrayList<SelectItem>();
+
+        for(OracleConnectionRole type : OracleConnectionRole.values())
+            connectionTypes.add(new SelectItem(type));
+
+        return connectionTypes;
+    }
+
+    public List<SelectItem> getConnectionTypes(){
+        List<SelectItem> connectionTypes = new ArrayList<SelectItem>();
+
+        for(OracleConnectionType type : OracleConnectionType.values())
+            connectionTypes.add(new SelectItem(type));
+
+        return connectionTypes;
     }
 
 }
