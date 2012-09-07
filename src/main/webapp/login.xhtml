@@ -1,4 +1,16 @@
-<form method="POST" action="j_security_check">
-    <input type="text" name="j_username"/>
-    <input type="password" name="j_password"/>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form action="j_security_check" method="post" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+    <p:dialog modal="true" header="Login" widgetVar="loginDlg">
+        <h:panelGrid columns="3" cellpadding="5">
+            <h:outputLabel for="j_username">Username:</h:outputLabel>
+            <h:inputText id="j_username" required="true" />
+            <h:message for="j_username" />
+            <h:outputLabel for="j_password">Password:</h:outputLabel>
+            <h:inputSecret id="j_password" required="true" />
+            <h:message for="j_password" />
+            <br />
+            <h:commandButton value="Login" />
+        </h:panelGrid>
+    </p:dialog>
 </form>
