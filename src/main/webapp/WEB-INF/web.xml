@@ -58,6 +58,11 @@
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
@@ -80,7 +85,7 @@
         <web-resource-collection>
             <web-resource-name>devs</web-resource-name>
             <description/>
-            <url-pattern>/dev/*</url-pattern>
+            <url-pattern>/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
