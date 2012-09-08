@@ -11,6 +11,7 @@
         <class>com.fourthelephant.enlighter.model.Task</class>
         <class>com.fourthelephant.enlighter.model.ServerConnection</class>
         <class>com.fourthelephant.enlighter.model.SysStat</class>
+        <class>com.fourthelephant.enlighter.model.OracleServerConnection</class>
 		<properties>
             <!--<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.SunONETransactionManagerLookup" />-->
             <property name="hibernate.archive.autodetection" value="class, hbm"/>

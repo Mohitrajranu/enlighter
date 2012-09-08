@@ -17,27 +17,43 @@
 
 
                     <h:outputLabel for="connectionname" value="Connection name:" />
-                    <p:inputText id="connectionname" value="#{serverConnectionBean.serverConnection.name}"/>
+                    <p:inputText id="connectionname" value="#{oracleServerConnectionBean.serverConnection.name}"/>
                     <p:message id="defaultMessage" for="connectionname"/>
 
                     <h:outputLabel for="username" value="User name:" />
-                    <p:inputText id="username" value="#{serverConnectionBean.serverConnection.userName}" />
+                    <p:inputText id="username" value="#{oracleServerConnectionBean.serverConnection.userName}" />
 
+                    <p:selectOneMenu id="connectiontype" value="#{oracleServerConnectionBean.serverConnection.connectionType}">
+                        <f:selectItems value="#{oracleServerConnectionBean.connectionTypes}" />
+                        <!--<p:ajax update="suburbs" listener="#{pprBean.handleCityChange}" />-->
+                    </p:selectOneMenu>
 
-               </h:panelGrid>
+                    <p:selectOneMenu id="connectionrole" value="#{oracleServerConnectionBean.serverConnection.connectionRole}">
+                        <f:selectItems value="#{oracleServerConnectionBean.connectionRoles}" />
+                    </p:selectOneMenu>
+
+                </h:panelGrid>
+
+<!--
+                <p:selectOneMenu id="suburbs" value="#{pprBean.suburb}">
+                    <f:selectItem itemLabel="Select Suburb" itemValue="" />
+                    <f:selectItems value="#{pprBean.suburbs}" />
+                </p:selectOneMenu>
+-->
+
 
                <p:separator />
 
 
                <p:separator />
-               <p:commandButton id="submitButton" value="Submit" update="connectiongrid" action="#{serverConnectionBean.saveServerConnection}" />
+               <p:commandButton id="submitButton" value="Submit" update="connectiongrid" action="#{oracleServerConnectionBean.saveServerConnection}" />
                <!-- oncomplete="dlg.hide();-->
 
             </h:form>
         </p:dialog>
 
         <p:outputPanel id="display" style="display:block;margin-top:10px;">
-            <h:outputText id="name" value="Hello #{serverConnectionBean.serverConnection.name}" rendered="#{not empty serverConnectionBean.serverConnection.name}"/>
+            <h:outputText id="name" value="Hello #{oracleServerConnectionBean.serverConnection.name}" rendered="#{not empty serverConnectionBean.serverConnection.name}"/>
         </p:outputPanel>
 
         <h2>System stats</h2>

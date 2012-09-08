@@ -31,7 +31,7 @@ public class ServerConnectionBean {
 		invalidateServerConnections();
 	}
 
-	private void invalidateServerConnections() {
+	protected void invalidateServerConnections() {
 		serverConnections = null;
 	}
 
