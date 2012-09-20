@@ -4,9 +4,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation=" 
 	http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"> -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_4.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/javaee/web-app_2_4.xsd"
-	version="2.4">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
@@ -67,6 +67,11 @@
         <session-timeout>30</session-timeout>
     </session-config>
 
+    <persistence-unit-ref>
+        <persistence-unit-ref-name>persistence/localunit</persistence-unit-ref-name>
+        <persistence-unit-name>localunit</persistence-unit-name>
+    </persistence-unit-ref>
+
     <security-constraint>
         <display-name>admin resources</display-name>
         <web-resource-collection>
@@ -90,6 +95,19 @@
         <auth-constraint>
             <description/>
             <role-name>developer</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-constraint>
+        <display-name>REST service</display-name>
+        <web-resource-collection>
+            <web-resource-name>rest</web-resource-name>
+            <description/>
+            <url-pattern>/rest/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
         </auth-constraint>
     </security-constraint>
 

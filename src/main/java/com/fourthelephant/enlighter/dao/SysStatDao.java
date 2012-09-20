@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class SysStatDao {
 
-    @PersistenceContext(unitName="localunit")
+    @PersistenceContext
 	private EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")

@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class ServerConnectionDao {
 
-	@PersistenceContext(unitName="localunit")
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	@Transactional

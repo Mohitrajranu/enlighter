@@ -5,19 +5,16 @@
       http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<persistence-unit name="localunit" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="localunit" transaction-type="JTA">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <!--<jta-data-source>jdbc/EnlighterDS</jta-data-source>-->
-        <class>com.fourthelephant.enlighter.model.Task</class>
-        <class>com.fourthelephant.enlighter.model.ServerConnection</class>
-        <class>com.fourthelephant.enlighter.model.SysStat</class>
-        <class>com.fourthelephant.enlighter.model.OracleServerConnection</class>
-		<properties>
-            <!--<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.SunONETransactionManagerLookup" />-->
-            <property name="hibernate.archive.autodetection" value="class, hbm"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
-		</properties>
+        <jta-data-source>jdbc/EnlighterDS</jta-data-source>
+        <!--<jta-data-source>java:jboss/datasources/EnlighterDS</jta-data-source>-->
+        <properties>
+                <!--<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.SunONETransactionManagerLookup" />-->
+                <property name="hibernate.archive.autodetection" value="class, hbm"/>
+                <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect" />
+                <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        </properties>
 	</persistence-unit>
 
 </persistence>
