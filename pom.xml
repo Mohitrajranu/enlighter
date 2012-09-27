@@ -222,8 +222,14 @@
             <version>3.3.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>2.4.6</version>
+        </dependency>
 
-	</dependencies>
+
+    </dependencies>
 
 	<repositories>
 		<!-- JBoss Repository used for Java EE 6 pieces -->
@@ -250,7 +256,17 @@
 
 	</repositories>
 
-	<build>
+    <pluginRepositories>
+
+        <pluginRepository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/glassfish/</url>
+        </pluginRepository>
+
+    </pluginRepositories>
+
+    <build>
 		<finalName>enlighter</finalName>
 		<plugins>
 
@@ -269,7 +285,8 @@
 			<!-- Plugin to run and test through maven -->
 			<plugin>
 				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
+				<artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.7.v20120910</version>
 				<configuration>
 					<scanIntervalSeconds>3</scanIntervalSeconds>
                     <stopPort>8580</stopPort>
@@ -279,7 +296,8 @@
                             <maxIdleTime>60000</maxIdleTime>
                         </connector>
                     </connectors>
-				</configuration>
+                    <stopKey/>
+                </configuration>
 			</plugin>
 
 			<!-- Ensures we are compiling at 1.6 level -->
@@ -337,6 +355,46 @@
             </plugin>
 
             <plugin>
+                <groupId>org.glassfish</groupId>
+                <artifactId>maven-embedded-glassfish-plugin</artifactId>
+                <version>3.1.1</version>
+                <configuration>
+                    <ports>
+                        <http-listener>8480</http-listener>
+                        <https-listener>8581</https-listener>
+                    </ports>
+                    <!--<goalPrefix>embedded-glassfish</goalPrefix>-->
+<!--
+                    <app>target/${project.build.finalName}.war</app>
+                    <name>test</name>
+                    <contextRoot>${project.artifactId}</contextRoot>
+                    <bootstrapProperties>
+                        <property>test_key=test_value</property>
+                    </bootstrapProperties>
+                    <bootstrapPropertiesFile>bootstrap.properties</bootstrapPropertiesFile>
+                    <glassfishProperties>
+                        <property>embedded-glassfish-config.server.jms-service.jms-host.default_JMS_host.port=17676</property>
+                    </glassfishProperties>
+                    <glassfishPropertiesFile>glassfish.properties</glassfishPropertiesFile>
+                    <systemProperties>
+                        <property>ANTLR_USE_DIRECT_CLASS_LOADING=true</property>
+                    </systemProperties>
+                    <systemPropertiesFile>system.properties</systemPropertiesFile>
+-->
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>start</goal>
+                            <goal>deploy</goal>
+                            <goal>undeploy</goal>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.12</version>
@@ -347,4 +405,5 @@
 
 		</plugins>
 	</build>
+
 </project>

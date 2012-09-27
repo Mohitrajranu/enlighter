@@ -3,7 +3,6 @@ package com.fourthelephant.enlighter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.test.annotation.Repeat;
@@ -11,6 +10,8 @@ import org.springframework.test.annotation.Timed;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,7 +24,7 @@ public class TaskManagerTest implements ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 
-    @Autowired
+    @Inject
     private TaskManager taskManager;
 
     public void setApplicationContext(ApplicationContext applicationContext) {
@@ -31,7 +32,7 @@ public class TaskManagerTest implements ApplicationContextAware {
     }
     @Before
     public void init() {
-        TaskManager taskManager = (TaskManager) applicationContext.getBean("taskManager");
+        TaskManager taskManager = (TaskManager) applicationContext.getBean("taskManagerImpl");
     }
 
     @Test
